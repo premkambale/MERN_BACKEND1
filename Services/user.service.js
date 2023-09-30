@@ -1,6 +1,12 @@
 const { userCollection } = require('./../Models');
 
 // -----------------------------------------------------------------------------------To Find User With email -------------------------------------------------------------------------------------------------------
+const fetch_all_users = async (req, res) => {
+  return await userCollection.find();
+}
+
+
+// -----------------------------------------------------------------------------------To Find User With email -------------------------------------------------------------------------------------------------------
 const findUser = async (req, res) => {
   return await userCollection.findOne({ email: req.body.email });
 }
@@ -35,5 +41,6 @@ module.exports = {
   findUser,
   findUserWithUserId,
   deleteTaskIdfromTaskArray,
-  deletAllUsers
+  deletAllUsers,
+  fetch_all_users
 }
