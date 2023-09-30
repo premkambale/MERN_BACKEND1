@@ -24,6 +24,10 @@ const userRegistrationSchema = mongoose.Schema({
   tasks: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'tasks',
+  }],
+  cart: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "products",
   }]
 }, {
   timestamps: true, // Add timestamps option here

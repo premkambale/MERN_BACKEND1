@@ -22,7 +22,7 @@ const createTask = async (req, res) => {
 const getAllTasks = async (req, res) => {
   try {
 
-    const user = await userService.findUserWithUserId(req);
+    const user = await userService.fetch_current_user(req);
     const tasks = await taskCollecton.find({ _id: { $in: user.tasks } });
     if (user.tasks.length == 0) {
       return res.send({ success: true, message: "No Tasks Created" });
@@ -54,7 +54,7 @@ const getTaskByTaskId = async (req, res) => {
 
 // ----------------------------------------------------------------------------------- Delete Task By taskId ----------------------------------------------------------------------
 const deleteTaskByTaskId = async (req, res) => {
-  const user = await userService.findUserWithUserId(req);
+  const user = await userService.fetch_current_user(req);
   const tasks = user.tasks;
   // console.log(user)
   // console.log(tasks)

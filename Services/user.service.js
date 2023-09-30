@@ -12,13 +12,17 @@ const findUser = async (req, res) => {
 }
 
 
-// -----------------------------------------------------------------------------------To Find User With _id -------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------To Find Current User -------------------------------------------------------------------------------------------------------
 
-const findUserWithUserId = async (req, res) => {
+const fetch_current_user = async (req, res) => {
   return await userCollection.findOne({ _id: req.userId })
 }
 
-// 1115 pariksit laptop
+
+// -----------------------------------------------------------------------------------To User By user _id -------------------------------------------------------------------------------------------------------
+const fetch_user_by_id = async (req) => {
+  return await userCollection.find({ _id: req.params.userId });
+}
 
 // -----------------------------------------------------------------------------------To Delete TaskId From Task Array Of Users----------------------------------------------------------------------
 
@@ -39,8 +43,9 @@ const deletAllUsers = async (req, res) => {
 }
 module.exports = {
   findUser,
-  findUserWithUserId,
+  fetch_current_user,
   deleteTaskIdfromTaskArray,
   deletAllUsers,
-  fetch_all_users
+  fetch_all_users,
+  fetch_user_by_id
 }

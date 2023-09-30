@@ -3,4 +3,5 @@ module.exports = {
   userService: require('./user.service'),
   taskService: require('./tasks.serice'),
   productService: require('./products.service'),
+  cartService : require('./cart.service')
 }

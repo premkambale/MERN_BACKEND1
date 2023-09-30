@@ -45,6 +45,7 @@ const login = async (req, res) => {
 
   const isUserRegistered = await authService.isEmailRegistered(req);
   const user = await userService.findUser(req);
+  console.log("user",user)
 
   // if user registered or not
   if (isUserRegistered === true) {
@@ -55,7 +56,7 @@ const login = async (req, res) => {
     if (matchPassword == true) {
 
       // generate jwt token
-      const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY);
+      const token = jwt.sign({ userId: user._id , accessRole : user.role }, process.env.SECRET_KEY);
       res.send({ success: true, message: 'Logged In Sucessfully', token: token, role: user.role });
     }
     else {

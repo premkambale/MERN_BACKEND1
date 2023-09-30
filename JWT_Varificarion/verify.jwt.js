@@ -1,17 +1,16 @@
 const jwt = require('jsonwebtoken');
 
 const verifyJwt = (req, res, next) => {
-  const token = req.header('Authorization').replace('Bearer ', '');
-
+  const token = req.header('Authorization')?.replace('Bearer ', '');
   if (!token) {
-    res.send({ success: false, message: "Not Authorised" });
+    res.send({ success: false, message: "Not Authorized" });
   }
-  else { 
+  else {
     try {
       const decoded = jwt.verify(token, process.env.SECRET_KEY);
-      const userId =  decoded.userId;
-      console.log(`${userId}`.yellow);
       req.userId = decoded.userId;
+      req.accessRole = decoded.accessRole;
+      console.log(`decoded.accessRole : ${decoded.accessRole} `.yellow)
       next();
     }
     catch (error) {
