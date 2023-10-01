@@ -4,5 +4,6 @@ module.exports = {
   taskController: require('./task.controller'),
   userController: require('./user.controller'),
   productcontroller: require('./products.controller'),
-  cartController : require('./cart.controller')
+  cartController : require('./cart.controller'),
+  orderController : require('./order.controller'),
 };

@@ -7,9 +7,6 @@ const jwt = require('jsonwebtoken');
 // ----------------------------------------------------------------------------------- Register User----------------------------------------------------------------------
 const registerUser = async (req, res) => {
   const isUserRegistered = await authService.isEmailRegistered(req);
-  console.log("Register Request", req);
-
-
   
   if (isUserRegistered == true) {
     return res.status(409).send({ message: 'user has already been regestered with this mail', success: false })
@@ -45,7 +42,6 @@ const login = async (req, res) => {
 
   const isUserRegistered = await authService.isEmailRegistered(req);
   const user = await userService.findUser(req);
-  console.log("user",user)
 
   // if user registered or not
   if (isUserRegistered === true) {

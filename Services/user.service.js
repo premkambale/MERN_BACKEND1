@@ -24,6 +24,12 @@ const fetch_user_by_id = async (req) => {
   return await userCollection.find({ _id: req.params.userId });
 }
 
+
+// -----------------------------------------------------------------------------------To User By user _id -------------------------------------------------------------------------------------------------------
+const delete_order_from_user = async (req) => {
+  return await userCollection.findByIdAndUpdate(req.userId, { $pull: { orders: req.params.orderId } }, { new: true });
+}
+
 // -----------------------------------------------------------------------------------To Delete TaskId From Task Array Of Users----------------------------------------------------------------------
 
 const deleteTaskIdfromTaskArray = async (req, res) => {
@@ -47,5 +53,6 @@ module.exports = {
   deleteTaskIdfromTaskArray,
   deletAllUsers,
   fetch_all_users,
-  fetch_user_by_id
+  fetch_user_by_id,
+  delete_order_from_user
 }

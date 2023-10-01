@@ -1,5 +1,4 @@
 const { userService, cartService } = require('../Services');
-const { userCollection } = require('./../Models')
 
 
 
@@ -17,8 +16,6 @@ const add_to_cart = async (req, res) => {
     }
     else {
       const userCart = await cartService.add_to_cart(req);
-      console.log("cart::", userCart)
-
       if (userCart) {
         res.send({
           success: true,

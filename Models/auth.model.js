@@ -21,14 +21,16 @@ const userRegistrationSchema = mongoose.Schema({
     enum: ['USER', 'ADMIN'],
     default: 'USER'
   },
-  tasks: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'tasks',
-  }],
   cart: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "products",
-  }]
+  }],
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'orders'
+    }
+  ]
 }, {
   timestamps: true, // Add timestamps option here
 }
